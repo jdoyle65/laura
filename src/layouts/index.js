@@ -1,6 +1,9 @@
 import * as React from "react";
 import { createGlobalStyle } from "styled-components";
 
+// Components
+import Nav from "../components/Nav";
+
 import "normalize.css";
 
 const GlobalStyle = createGlobalStyle`
@@ -14,7 +17,8 @@ const GlobalStyle = createGlobalStyle`
     --primary-rgb: 	33, 47, 60;
     --secondary-color: #c2e0f9;
     --tertiary-color: #7cbdf2;
-    --complementary-color: 199, 124, 242;
+    --complementary-color: #c77cf2;
+    --complementary-rgb: 199, 124, 242;
     --bg-color: #fbfcfc;
 
     /* Motion */
@@ -23,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html,
@@ -34,9 +40,25 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const items = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Research",
+    href: "/research",
+  },
+  {
+    label: "Classes",
+    href: "/classes",
+  },
+];
+
 const Layout = ({ children }) => (
   <React.Fragment>
     <GlobalStyle />
+    <Nav items={items} />
     {children}
   </React.Fragment>
 );
