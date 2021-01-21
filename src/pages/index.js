@@ -1,5 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
+import emphasis from "../styled/emphasis";
+import HeadingOne from "../components/HeadingOne";
+import HeadingTwo from "../components/HeadingTwo";
 
 // images
 import splash from "../images/splash.jpg";
@@ -42,33 +45,18 @@ const Splash = styled.div`
   }
 `;
 
-const HeadingTop = styled.h2`
-  display: inline;
-  font-family: "Poppins", sans-serif;
+const heading = (el) => styled(emphasis(el))`
   color: var(--bg-color);
-  font-size: 4rem;
   position: relative;
   z-index: 1;
-  background-image: linear-gradient(
-    to top,
-    rgba(199, 124, 242, 0.7) 40%,
-    transparent 40%
-  );
   margin: 1rem 0;
 `;
-const HeadingBottom = styled.h1`
-  display: inline;
-  font-family: "Poppins", sans-serif;
-  color: var(--bg-color);
+
+const HeadingTop = styled(heading(HeadingOne))`
+  font-size: 4rem;
+`;
+const HeadingBottom = styled(heading(HeadingTwo))`
   font-size: 6rem;
-  position: relative;
-  z-index: 1;
-  background-image: linear-gradient(
-    to top,
-    rgba(199, 124, 242, 0.7) 40%,
-    transparent 40%
-  );
-  margin: 1rem 0;
 `;
 
 const Paragraph = styled.p`
