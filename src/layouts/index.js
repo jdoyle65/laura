@@ -38,6 +38,10 @@ const GlobalStyle = createGlobalStyle`
     background: var(--bg-color);
     line-height: 1.2;
   }
+
+  p {
+    line-height: 1.5;
+  }
 `;
 
 const items = [

@@ -10,6 +10,7 @@ const NavRoot = styled.nav`
   height: 4rem;
   width: 100%;
   padding: 0 1.5rem;
+  background: var(--bg-color);
 
   & > ol {
     display: flex;

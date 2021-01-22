@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { RichText } from "prismic-reactjs";
 
 // Styles
 import emphasis from "../styled/emphasis";
@@ -11,6 +12,7 @@ import HeadingTwo from "../components/HeadingTwo";
 
 // images
 import splash from "../images/splash.jpg";
+import { graphql } from "gatsby";
 
 const mainStyle = {
   padding: "4rem 1.5rem 0",
@@ -93,7 +95,7 @@ const HeadingBottom = styled(heading(HeadingOne))`
   }
 `;
 
-const Paragraph = styled.p`
+const Paragraph = styled.div`
   line-height: 1.5;
   margin-top: 5rem;
   max-width: 32rem;
@@ -119,20 +121,19 @@ const Polygon = styled.div`
   }
 `;
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
+  const { home } = data.prismic;
+
   return (
     <main style={mainStyle}>
       <title>Home - Laura V Ferguson, PhD</title>
 
       <Splash>
-        <HeadingTop>Laura V</HeadingTop>
+        <HeadingTop>{home.top_heading[0].text}</HeadingTop>
         <br />
-        <HeadingBottom>Ferguson, PhD</HeadingBottom>
+        <HeadingBottom>{home.bottom_heading[0].text}</HeadingBottom>
         <Paragraph>
-          I am a wicked good researcher. Trust me, I am the coolest that you
-          will ever meet. I’ll do cool science with you, and when we’re done I’m
-          pretty sure you’ll say “Wow! That was super fun science and I can’t
-          wait to do another project with Laura V Ferguson!”
+          <RichText render={home.body} />
         </Paragraph>
         <Polygon />
       </Splash>
@@ -141,3 +142,15 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  {
+    prismic {
+      home(uid: "home", lang: "en-ca") {
+        top_heading
+        bottom_heading
+        body
+      }
+    }
+  }
+`;
