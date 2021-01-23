@@ -5,6 +5,7 @@ on:
     branches:
       - main
   repository_dispatch:
+    event_types: [publish]
 
 jobs:
   build:
