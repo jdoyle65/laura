@@ -33,48 +33,39 @@ const Column = styled.div`
   padding: 1rem;
 `;
 
-const ClassTemplate = ({ data }) => {
-  const myClass = data.prismic.class;
-
-  const lectures = [
-    { date: "2021-01-18", body: "This is the first class" },
-    { date: "2021-01-20", body: "this is the second class" },
-  ];
+const ClassTemplate = (props) => {
+  const { uid, data } = props.pageContext.data;
+  const lectures = data.lectures;
 
   return (
     <main style={mainStyle}>
-      <Title>{RichText.asText(myClass.title)}</Title>
+      <Title>{data.title.text}</Title>
       <p>
-        <DateSpan>{format(new Date(myClass.start_date), "PPP")}</DateSpan>
+        <DateSpan>{format(new Date(data.start_date), "PPP")}</DateSpan>
       </p>
       <Row>
-        <Column>
+        <Column style={{ flex: 2 }}>
           <SubTitle>About</SubTitle>
-          <RichText render={myClass.description} />
+          <RichText render={data.description.raw} />
         </Column>
-        <Column>
-          <SubTitle>Lectures</SubTitle>
-          <div style={{ margin: "1rem" }}>
-            {lectures.map((l) => (
-              <Lecture date={l.date} body={l.body} />
-            ))}
-          </div>
-        </Column>
+        {lectures && (
+          <Column>
+            <SubTitle>Lectures</SubTitle>
+            {lectures.length > 0 && (
+              <div style={{ margin: "1rem" }}>
+                {lectures.map((l) => (
+                  <Lecture
+                    date={l.lecture_date}
+                    body={l.lecture_description.raw}
+                  />
+                ))}
+              </div>
+            )}
+          </Column>
+        )}
       </Row>
     </main>
   );
 };
-
-export const query = graphql`
-  query Class($uid: String!) {
-    prismic {
-      class(uid: $uid, lang: "en-ca") {
-        title
-        start_date
-        description
-      }
-    }
-  }
-`;
 
 export default ClassTemplate;

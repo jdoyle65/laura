@@ -8,15 +8,15 @@ const mainStyle = {
 };
 
 const ClassesPage = ({ data }) => {
-  const allClasses = data.prismic.allClasss.edges.map((edge) => edge.node);
+  const allClasses = data.allPrismicClass.edges.map((edge) => edge.node);
   return (
     <main style={mainStyle}>
       <Title>Classes</Title>
       <ul>
         {allClasses.map((c, i) => (
           <li key={i}>
-            <Link to={`/classes/${c._meta.uid}`}>
-              {c.title[0].text} - {c.start_date}
+            <Link to={`/classes/${c.uid}`}>
+              {c.data.title.text} - {c.data.start_date}
             </Link>
           </li>
         ))}
@@ -27,14 +27,14 @@ const ClassesPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    prismic {
-      allClasss {
-        edges {
-          node {
-            _meta {
-              uid
+    allPrismicClass {
+      edges {
+        node {
+          uid
+          data {
+            title {
+              text
             }
-            title
             start_date
           }
         }

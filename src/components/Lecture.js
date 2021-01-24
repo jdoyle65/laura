@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { format } from "date-fns";
+import { RichText } from "prismic-reactjs";
 
 const Wrapper = styled.div`
   margin-bottom: 2rem;
@@ -17,7 +18,7 @@ const Lecture = ({ date, body }) => {
   return (
     <Wrapper>
       <DateSpan>{format(new Date(date), "PPP")}</DateSpan>
-      <p>{body}</p>
+      <RichText render={body} />
     </Wrapper>
   );
 };

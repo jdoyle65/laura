@@ -122,18 +122,18 @@ const Polygon = styled.div`
 `;
 
 const IndexPage = ({ data }) => {
-  const { home } = data.prismic;
+  const home = data.prismicHome.data;
 
   return (
     <main style={mainStyle}>
       <title>Home - Laura V Ferguson, PhD</title>
 
       <Splash>
-        <HeadingTop>{home.top_heading[0].text}</HeadingTop>
+        <HeadingTop>{home.top_heading.text}</HeadingTop>
         <br />
-        <HeadingBottom>{home.bottom_heading[0].text}</HeadingBottom>
+        <HeadingBottom>{home.bottom_heading.text}</HeadingBottom>
         <Paragraph>
-          <RichText render={home.body} />
+          <RichText render={home.body.raw} />
         </Paragraph>
         <Polygon />
       </Splash>
@@ -144,12 +144,18 @@ const IndexPage = ({ data }) => {
 export default IndexPage;
 
 export const query = graphql`
-  {
-    prismic {
-      home(uid: "home", lang: "en-ca") {
-        top_heading
-        bottom_heading
-        body
+  query {
+    prismicHome(uid: { eq: "home" }) {
+      data {
+        top_heading {
+          text
+        }
+        bottom_heading {
+          text
+        }
+        body {
+          raw
+        }
       }
     }
   }

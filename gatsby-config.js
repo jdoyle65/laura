@@ -25,29 +25,42 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-prismic-graphql",
+      resolve: "gatsby-source-prismic",
       options: {
         repositoryName: "laura-ferguson-phd",
-        defaultLang: "en-ca",
-        // accessToken: "...", // optional
-        // prismicRef: "...", // optional, default: master; useful for A/B experiments
-        // path: "/preview", // optional, default: /preview
-        previews: false, // optional, default: false
-        // pages: [
-        //   {
-        //     // optional
-        //     type: "class", // TypeName from prismic
-        //     match: "/classes/:uid", // pages will be generated under this pattern
-        //     // previewPath: "/article", // optional path for unpublished documents
-        //     component: require.resolve("./src/templates/class.js"),
-        //     // sortBy: "date_ASC", // optional, default: meta_lastPublicationDate_ASC; useful for pagination
-        //   },
+        // linkResolver: ({ node, key, value }) => (doc) => {
+        //   // Your link resolver
+        // },
+        // fetchLinks: [
+        //   // Your list of links
         // ],
-        // extraPageFields: "article_type", // optional, extends pages query to pass extra fields
-        // sharpKeys: [
-        //   /image|photo|picture/, // (default)
-        //   "profilepic",
-        // ],
+        // htmlSerializer: ({ node, key, value }) => (
+        //   type,
+        //   element,
+        //   content,
+        //   children
+        // ) => {
+        //   // Your HTML serializer
+        // },
+        schemas: {
+          home: require("./src/schemas/home.json"),
+          class: require("./src/schemas/class.json"),
+        },
+        lang: "en-ca",
+        prismicToolbar: false,
+        // shouldDownloadImage: ({ node, key, value }) => {
+        //   // Return true to download the image or false to skip.
+        // },
+        imageImgixParams: {
+          auto: "compress,format",
+          fit: "max",
+          q: 50,
+        },
+        imagePlaceholderImgixParams: {
+          w: 100,
+          blur: 15,
+          q: 50,
+        },
       },
     },
   ],

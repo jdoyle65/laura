@@ -1,0 +1,31 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "uid"
+      }
+    },
+    "top_heading": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Top Heading"
+      }
+    },
+    "bottom_heading": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Bottom Heading"
+      }
+    },
+    "body": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, strong, em, hyperlink, list-item, o-list-item, rtl",
+        "label": "Body"
+      }
+    }
+  }
+}
