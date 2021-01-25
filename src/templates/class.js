@@ -5,6 +5,7 @@ import { format } from "date-fns";
 
 import Title from "../components/Title";
 import SubTitle from "../components/SubTitle";
+import Main from "../components/Main";
 import breakpoints from "../styled/breakpoints";
 import Lecture from "../components/Lecture";
 
@@ -23,6 +24,10 @@ const Row = styled.div`
   flex-direction: column;
   margin: 0 -1rem;
 
+  @media (min-width: ${breakpoints.md}) {
+    margin: 0;
+  }
+
   @media (min-width: ${breakpoints.lg}) {
     flex-direction: row;
   }
@@ -30,7 +35,7 @@ const Row = styled.div`
 
 const Column = styled.div`
   flex: 1;
-  padding: 1rem;
+  padding: 0 1rem;
 `;
 
 const ClassTemplate = (props) => {
@@ -38,7 +43,7 @@ const ClassTemplate = (props) => {
   const lectures = data.lectures;
 
   return (
-    <main style={mainStyle}>
+    <Main>
       <Title>{data.title.text}</Title>
       <p>
         <DateSpan>{format(new Date(data.start_date), "PPP")}</DateSpan>
@@ -64,7 +69,7 @@ const ClassTemplate = (props) => {
           </Column>
         )}
       </Row>
-    </main>
+    </Main>
   );
 };
 

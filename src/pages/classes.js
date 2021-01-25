@@ -2,15 +2,12 @@ import * as React from "react";
 import { Link } from "gatsby";
 
 import Title from "../components/Title";
-
-const mainStyle = {
-  padding: "5rem 3rem 0",
-};
+import Main from "../components/Main";
 
 const ClassesPage = ({ data }) => {
   const allClasses = data.allPrismicClass.edges.map((edge) => edge.node);
   return (
-    <main style={mainStyle}>
+    <Main>
       <Title>Classes</Title>
       <ul>
         {allClasses.map((c, i) => (
@@ -21,7 +18,7 @@ const ClassesPage = ({ data }) => {
           </li>
         ))}
       </ul>
-    </main>
+    </Main>
   );
 };
 

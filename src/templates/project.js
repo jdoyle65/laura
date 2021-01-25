@@ -4,11 +4,8 @@ import styled from "styled-components";
 
 import Title from "../components/Title";
 import SubTitle from "../components/SubTitle";
+import Main from "../components/Main";
 import breakpoints from "../styled/breakpoints";
-
-const mainStyle = {
-  padding: "5rem 3rem 0",
-};
 
 const DateSpan = styled.span`
   color: var(--bg-color);
@@ -21,6 +18,10 @@ const Row = styled.div`
   flex-direction: column;
   margin: 0 -1rem;
 
+  @media (min-width: ${breakpoints.md}) {
+    margin: 0;
+  }
+
   @media (min-width: ${breakpoints.lg}) {
     flex-direction: row;
   }
@@ -28,7 +29,7 @@ const Row = styled.div`
 
 const Column = styled.div`
   flex: 1;
-  padding: 1rem;
+  padding: 0 1rem;
 `;
 
 const Gallery = styled.div`
@@ -64,7 +65,7 @@ const ClassTemplate = (props) => {
     data.body?.filter((b) => b.slice_type === "image_gallery") ?? [];
 
   return (
-    <main style={mainStyle}>
+    <Main>
       <Title>{data.title.text}</Title>
       <Row>
         <Column style={{ flex: 2 }}>
@@ -73,7 +74,7 @@ const ClassTemplate = (props) => {
         </Column>
         {galleries.length > 0 && (
           <Column>
-            <SubTitle>Images</SubTitle>
+            <SubTitle>Gallery</SubTitle>
             {galleries.map((g) => (
               <Gallery>
                 {g.items.map((item) => (
@@ -86,7 +87,7 @@ const ClassTemplate = (props) => {
           </Column>
         )}
       </Row>
-    </main>
+    </Main>
   );
 };
 

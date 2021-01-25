@@ -3,15 +3,12 @@ import { Link } from "gatsby";
 
 import Title from "../components/Title";
 import SubTitle from "../components/SubTitle";
-
-const mainStyle = {
-  padding: "5rem 3rem 0",
-};
+import Main from "../components/Main";
 
 const ClassesPage = ({ data }) => {
   const allProjects = data.allPrismicProject.edges.map((edge) => edge.node);
   return (
-    <main style={mainStyle}>
+    <Main>
       <Title>Research</Title>
       <div>
         <SubTitle>Projects</SubTitle>
@@ -23,7 +20,7 @@ const ClassesPage = ({ data }) => {
           ))}
         </ul>
       </div>
-    </main>
+    </Main>
   );
 };
 
