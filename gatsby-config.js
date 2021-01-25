@@ -25,6 +25,12 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-html-attributes",
+      options: {
+        lang: "en-ca",
+      },
+    },
+    {
       resolve: "gatsby-source-prismic",
       options: {
         repositoryName: "laura-ferguson-phd",

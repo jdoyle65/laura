@@ -44,6 +44,7 @@ const ClassTemplate = (props) => {
 
   return (
     <Main>
+      <title>{data.title.text} - Laura V Ferguson, PhD</title>
       <Title>{data.title.text}</Title>
       <p>
         <DateSpan>{format(new Date(data.start_date), "PPP")}</DateSpan>

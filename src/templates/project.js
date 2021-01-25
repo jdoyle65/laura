@@ -63,9 +63,11 @@ const ClassTemplate = (props) => {
   const { uid, data } = props.pageContext.data;
   const galleries =
     data.body?.filter((b) => b.slice_type === "image_gallery") ?? [];
+  console.log(galleries);
 
   return (
     <Main>
+      <title>{data.title.text} - Laura V Ferguson, PhD</title>
       <Title>{data.title.text}</Title>
       <Row>
         <Column style={{ flex: 2 }}>
@@ -79,7 +81,10 @@ const ClassTemplate = (props) => {
               <Gallery>
                 {g.items.map((item) => (
                   <ImageWrapper>
-                    <GalleryImage src={item.gallery_image.url} />
+                    <GalleryImage
+                      src={item.gallery_image.url}
+                      alt={item.gallery_image.alt}
+                    />
                   </ImageWrapper>
                 ))}
               </Gallery>

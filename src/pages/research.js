@@ -9,6 +9,7 @@ const ClassesPage = ({ data }) => {
   const allProjects = data.allPrismicProject.edges.map((edge) => edge.node);
   return (
     <Main>
+      <title>Research - Laura V Ferguson, PhD</title>
       <Title>Research</Title>
       <div>
         <SubTitle>Projects</SubTitle>

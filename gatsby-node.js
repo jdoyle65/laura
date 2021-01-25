@@ -39,6 +39,7 @@ exports.createPages = async function ({ actions, graphql }) {
                   items {
                     gallery_image {
                       url
+                      alt
                     }
                     image_captions {
                       raw

@@ -8,6 +8,7 @@ const ClassesPage = ({ data }) => {
   const allClasses = data.allPrismicClass.edges.map((edge) => edge.node);
   return (
     <Main>
+      <title>Classes - Laura V Ferguson, PhD</title>
       <Title>Classes</Title>
       <ul>
         {allClasses.map((c, i) => (
