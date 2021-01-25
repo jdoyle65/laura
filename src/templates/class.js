@@ -53,19 +53,17 @@ const ClassTemplate = (props) => {
           <SubTitle>About</SubTitle>
           <RichText render={data.description.raw} />
         </Column>
-        {lectures && (
+        {lectures && lectures.length > 0 && (
           <Column>
             <SubTitle>Lectures</SubTitle>
-            {lectures.length > 0 && (
-              <div style={{ margin: "1rem" }}>
-                {lectures.map((l) => (
-                  <Lecture
-                    date={l.lecture_date}
-                    body={l.lecture_description.raw}
-                  />
-                ))}
-              </div>
-            )}
+            <div style={{ margin: "1rem" }}>
+              {lectures.map((l) => (
+                <Lecture
+                  date={l.lecture_date}
+                  body={l.lecture_description.raw}
+                />
+              ))}
+            </div>
           </Column>
         )}
       </Row>

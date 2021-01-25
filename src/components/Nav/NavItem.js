@@ -48,7 +48,11 @@ const NavLink = styled(Link)`
 const NavItem = ({ children, href }) => {
   return (
     <ListItem>
-      <NavLink to={href} activeClassName="active">
+      <NavLink
+        to={href}
+        activeClassName="active"
+        partiallyActive={href !== "/"}
+      >
         {children}
       </NavLink>
     </ListItem>

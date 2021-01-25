@@ -15,7 +15,9 @@ const ClassesPage = ({ data }) => {
         <ul>
           {allProjects.map((p, i) => (
             <li key={i}>
-              <Link to={`/projects/${p.uid}`}>{p.data.title.text}</Link>
+              <Link to={`/research/projects/${p.uid}`}>
+                {p.data.title.text}
+              </Link>
             </li>
           ))}
         </ul>
