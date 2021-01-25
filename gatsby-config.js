@@ -45,6 +45,7 @@ module.exports = {
         schemas: {
           home: require("./src/schemas/home.json"),
           class: require("./src/schemas/class.json"),
+          project: require("./src/schemas/project.json"),
         },
         lang: "en-ca",
         prismicToolbar: false,

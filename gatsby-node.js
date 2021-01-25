@@ -23,6 +23,36 @@ exports.createPages = async function ({ actions, graphql }) {
           }
         }
       }
+
+      allPrismicProject {
+        edges {
+          node {
+            uid
+            data {
+              title {
+                text
+              }
+              body {
+                ... on PrismicProjectBodyImageGallery {
+                  id
+                  slice_type
+                  items {
+                    gallery_image {
+                      url
+                    }
+                    image_captions {
+                      raw
+                    }
+                  }
+                }
+              }
+              description {
+                raw
+              }
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -31,6 +61,15 @@ exports.createPages = async function ({ actions, graphql }) {
     actions.createPage({
       path: `classes/${uid}`,
       component: require.resolve(`./src/templates/class.js`),
+      context: { data: edge.node },
+    });
+  });
+
+  data.allPrismicProject.edges.forEach((edge) => {
+    const uid = edge.node.uid;
+    actions.createPage({
+      path: `projects/${uid}`,
+      component: require.resolve("./src/templates/project.js"),
       context: { data: edge.node },
     });
   });
