@@ -46,7 +46,7 @@ const ClassCard = ({ title, description, image = {} }) => {
     <Wrapper>
       <Image url={image.url} />
       <h2>{title}</h2>
-      <RichText render={description.raw} />
+      {description && <RichText render={description.raw} />}
     </Wrapper>
   );
 };
