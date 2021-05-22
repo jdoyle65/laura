@@ -40,15 +40,17 @@ const Column = styled.div`
 
 const ClassTemplate = (props) => {
   const { uid, data } = props.pageContext.data;
-  const lectures = data.lectures;
+  const { lectures, display_dates = false } = data;
 
   return (
     <Main>
       <title>{data.title.text} - Laura V Ferguson, PhD</title>
       <Title>{data.title.text}</Title>
-      <p>
-        <DateSpan>{format(new Date(data.start_date), "PPP")}</DateSpan>
-      </p>
+      {display_dates && (
+        <p>
+          <DateSpan>{format(new Date(data.start_date), "PPP")}</DateSpan>
+        </p>
+      )}
       <Row>
         <Column style={{ flex: 2 }}>
           <SubTitle>About</SubTitle>
@@ -58,10 +60,12 @@ const ClassTemplate = (props) => {
           <Column>
             <SubTitle>Lectures</SubTitle>
             <div style={{ margin: "1rem" }}>
-              {lectures.map((l) => (
+              {lectures.map((l, i) => (
                 <Lecture
                   date={l.lecture_date}
                   body={l.lecture_description.raw}
+                  index={i}
+                  showDate={display_dates}
                 />
               ))}
             </div>

@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     --primary-rgb: 	33, 47, 60;
     --secondary-color: #c2e0f9;
     --tertiary-color: #7cbdf2;
+    --tertiary-color-rgb: 124, 189, 242;
     --complementary-color: #c77cf2;
     --complementary-rgb: 199, 124, 242;
     --bg-color: #fbfcfc;

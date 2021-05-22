@@ -19,11 +19,35 @@
         "label": "Start Date"
       }
     },
+    "short_description": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph, strong, em",
+        "label": "short_description"
+      }
+    },
     "description": {
       "type": "StructuredText",
       "config": {
         "multi": "paragraph, preformatted, strong, em, hyperlink, list-item, o-list-item, rtl",
         "label": "Description"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "image"
+      }
+    }
+  },
+  "Lectures": {
+    "display_dates": {
+      "type": "Boolean",
+      "config": {
+        "default_value": true,
+        "label": "display_dates"
       }
     },
     "lectures": {

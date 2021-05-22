@@ -9,6 +9,7 @@ exports.createPages = async function ({ actions, graphql }) {
               title {
                 text
               }
+              display_dates
               start_date
               description {
                 raw
@@ -57,6 +58,7 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   `);
 
+  console.log(data);
   data.allPrismicClass.edges.forEach((edge) => {
     const uid = edge.node.uid;
     actions.createPage({

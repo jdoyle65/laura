@@ -5,6 +5,7 @@ import NavItem from "./NavItem";
 
 const NavRoot = styled.nav`
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   height: 4rem;

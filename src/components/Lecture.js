@@ -14,10 +14,11 @@ const DateSpan = styled.span`
   font-size: 0.875rem;
 `;
 
-const Lecture = ({ date, body }) => {
+const Lecture = ({ date, body, showDate = true, index = 0 }) => {
   return (
     <Wrapper>
-      <DateSpan>{format(new Date(date), "PPP")}</DateSpan>
+      {showDate && <DateSpan>{format(new Date(date), "PPP")}</DateSpan>}
+      {!showDate && <DateSpan>Lecture {index + 1}</DateSpan>}
       <RichText render={body} />
     </Wrapper>
   );
