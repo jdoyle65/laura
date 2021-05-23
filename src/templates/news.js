@@ -78,10 +78,9 @@ const BannerImage = styled.div`
   }
 `;
 
-const ClassTemplate = (props) => {
+const NewsTemplate = (props) => {
   const { uid, data } = props.pageContext.data;
-  const { lectures, display_dates = false, image } = data;
-  console.log(image);
+  const { image } = data;
 
   return (
     <Main>
@@ -91,7 +90,7 @@ const ClassTemplate = (props) => {
           property="og:title"
           content={data.title.text + " - Laura V Ferguson, PhD"}
         />
-        <meta property="og:description" content={data.description.text} />
+        <meta property="og:description" content={data.body.text} />
         <meta property="og:image" content={data.image.url} />
         <meta name="twitter:card" content="summary_large_image"></meta>
         <meta name="twitter:site" content="" />
@@ -99,7 +98,7 @@ const ClassTemplate = (props) => {
           name="twitter:title"
           content={data.title.text + " - Laura V Ferguson, PhD"}
         />
-        <meta name="twitter:description" content={data.description.text} />
+        <meta name="twitter:description" content={data.body.text} />
         <meta name="twitter:image" content={data.image.url} />
 
         <title style={{ zIndex: 1 }}>
@@ -108,35 +107,15 @@ const ClassTemplate = (props) => {
       </Helmet>
       <BannerImage url={image.url}>
         <Title color={"var(--bg-color)"}>{data.title.text}</Title>
-        {display_dates && (
-          <p>
-            <DateSpan>{format(new Date(data.start_date), "PPP")}</DateSpan>
-          </p>
-        )}
       </BannerImage>
       <Row>
         <Column style={{ flex: 2 }}>
           <SubTitle>About</SubTitle>
-          <RichText render={data.description.raw} />
+          <RichText render={data.body.raw} />
         </Column>
-        {lectures && lectures.length > 0 && (
-          <Column>
-            <SubTitle>Lectures</SubTitle>
-            <div style={{ margin: "1rem" }}>
-              {lectures.map((l, i) => (
-                <Lecture
-                  date={l.lecture_date}
-                  body={l.lecture_description.raw}
-                  index={i}
-                  showDate={display_dates}
-                />
-              ))}
-            </div>
-          </Column>
-        )}
       </Row>
     </Main>
   );
 };
 
-export default ClassTemplate;
+export default NewsTemplate;

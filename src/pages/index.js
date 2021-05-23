@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { RichText } from "prismic-reactjs";
+import { Helmet } from "react-helmet";
 
 // Styles
 import emphasis from "../styled/emphasis";
@@ -144,7 +145,18 @@ const IndexPage = ({ data }) => {
 
   return (
     <main style={mainStyle}>
-      <title>Home - Laura V Ferguson, PhD</title>
+      <Helmet>
+        <title>Home - Laura V Ferguson, PhD</title>
+        <meta property="og:url" content="" />
+        <meta property="og:title" content="Laura V Ferguson, PhD" />
+        <meta property="og:description" content={home.body.text} />
+        <meta property="og:image" content={home.profile_image.url} />
+        <meta name="twitter:card" content="summary_large_image"></meta>
+        <meta name="twitter:site" content="" />
+        <meta name="twitter:title" content="Laura V Ferguson, PhD" />
+        <meta name="twitter:description" content={home.body.text} />
+        <meta name="twitter:image" content={home.profile_image.url} />
+      </Helmet>
 
       <Splash>
         <HeadingTop>{home.top_heading.text}</HeadingTop>
@@ -175,6 +187,7 @@ export const query = graphql`
         }
         body {
           raw
+          text
         }
         profile_image {
           url

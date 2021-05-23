@@ -51,6 +51,10 @@ const items = [
     href: "/",
   },
   {
+    label: "News",
+    href: "/news",
+  },
+  {
     label: "Research",
     href: "/research",
   },

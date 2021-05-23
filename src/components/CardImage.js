@@ -17,7 +17,7 @@ const Image = styled.div`
     height: 100%;
     background-image: url(${(props) => props.url});
     background-size: cover;
-    filter: grayscale(100%);
+    ${(props) => (props.grayscale ? "filter: grayscale(100%);" : "")}
     transition: filter 100ms;
   }
 

@@ -8,6 +8,7 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -52,6 +53,7 @@ module.exports = {
           home: require("./src/schemas/home.json"),
           class: require("./src/schemas/class.json"),
           project: require("./src/schemas/project.json"),
+          news: require("./src/schemas/news.json"),
         },
         lang: "en-ca",
         prismicToolbar: false,

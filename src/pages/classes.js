@@ -44,6 +44,7 @@ const ClassesPage = ({ data }) => {
                 image={c.data.image}
                 title={c.data.title.text}
                 description={c.data.short_description}
+                grayscale={true}
               />
             </Link>
           </div>

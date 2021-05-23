@@ -17,6 +17,7 @@ exports.createPages = async function ({ actions, graphql }) {
               start_date
               description {
                 raw
+                text
               }
               lectures {
                 lecture_date
@@ -59,6 +60,29 @@ exports.createPages = async function ({ actions, graphql }) {
           }
         }
       }
+
+      allPrismicNews {
+        edges {
+          node {
+            uid
+            data {
+              title {
+                text
+              }
+              body {
+                raw
+                text
+              }
+              image {
+                url
+                alt
+              }
+              published_at
+              is_featured
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -77,6 +101,15 @@ exports.createPages = async function ({ actions, graphql }) {
     actions.createPage({
       path: `research/projects/${uid}`,
       component: require.resolve("./src/templates/project.js"),
+      context: { data: edge.node },
+    });
+  });
+
+  data.allPrismicNews.edges.forEach((edge) => {
+    const uid = edge.node.uid;
+    actions.createPage({
+      path: `news/${uid}`,
+      component: require.resolve("./src/templates/news.js"),
       context: { data: edge.node },
     });
   });
