@@ -37,6 +37,14 @@
         "thumbnails": [],
         "label": "profile_image"
       }
+    },
+    "splash_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "splash_image"
+      }
     }
   }
 }

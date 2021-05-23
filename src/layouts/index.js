@@ -1,5 +1,5 @@
 import * as React from "react";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 // Components
 import Nav from "../components/Nav";
@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     --primary-color: #212f3c;
     --primary-rgb: 	33, 47, 60;
     --secondary-color: #c2e0f9;
+    --secondary-color-rgb: 194, 224, 249;
     --tertiary-color: #7cbdf2;
     --tertiary-color-rgb: 124, 189, 242;
     --complementary-color: #c77cf2;
@@ -45,6 +46,10 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const Wrapper = styled.div`
+  margin-top: 4rem;
+`;
+
 const items = [
   {
     label: "Home",
@@ -68,7 +73,7 @@ const Layout = ({ children }) => (
   <React.Fragment>
     <GlobalStyle />
     <Nav items={items} />
-    {children}
+    <Wrapper>{children}</Wrapper>
   </React.Fragment>
 );
 

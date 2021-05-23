@@ -11,24 +11,26 @@ import breakpoints from "../styled/breakpoints";
 import HeadingOne from "../components/HeadingOne";
 import HeadingTwo from "../components/HeadingTwo";
 
-// images
-import splash from "../images/splash.jpg";
 import { graphql } from "gatsby";
 
 const mainStyle = {
-  padding: "4rem 1.5rem 0",
+  padding: "0 1.5rem",
   color: "var(--bg-color)",
-  height: "100vh",
+  overflow: "auto",
 };
+
+const SplashWrapper = styled.div`
+  background-color: var(--primary-color);
+`;
 
 const Splash = styled.div`
   position: relative;
-  background: url(${splash});
+  background: url(${(props) => props.url});
   background-size: cover;
   background-color: var(--primary-color);
   background-position: right;
   color: var(--bg-color);
-  height: 100%;
+  min-height: calc(100vh - 4rem);
   padding: 6rem 3rem 2rem;
 
   &:before {
@@ -114,7 +116,7 @@ const Polygon = styled.div`
   left: 0;
   height: 8rem;
   width: 100%;
-  background: var(--secondary-color);
+  background: rgba(var(--secondary-color-rgb), 0.2);
   clip-path: polygon(0 0, 100% 45%, 100% 100%, 0 100%);
 
   @media (min-width: ${breakpoints.md}) {
@@ -147,6 +149,7 @@ const IndexPage = ({ data }) => {
     <main style={mainStyle}>
       <Helmet>
         <title>Home - Laura V Ferguson, PhD</title>
+        <meta name="description" content={home.body.text} />
         <meta property="og:url" content="" />
         <meta property="og:title" content="Laura V Ferguson, PhD" />
         <meta property="og:description" content={home.body.text} />
@@ -158,17 +161,22 @@ const IndexPage = ({ data }) => {
         <meta name="twitter:image" content={home.profile_image.url} />
       </Helmet>
 
-      <Splash>
-        <HeadingTop>{home.top_heading.text}</HeadingTop>
-        <br />
-        <HeadingBottom>{home.bottom_heading.text}</HeadingBottom>
-        <br />
-        <ProfileImage src={home.profile_image.url} />
-        <Paragraph>
-          <RichText render={home.body.raw} />
-        </Paragraph>
-        <Polygon />
-      </Splash>
+      <SplashWrapper>
+        <Splash url={home.splash_image.url}>
+          <HeadingTop>{home.top_heading.text}</HeadingTop>
+          <br />
+          <HeadingBottom>{home.bottom_heading.text}</HeadingBottom>
+          <br />
+          <ProfileImage
+            src={home.profile_image.url}
+            alt={home.profile_image.alt}
+          />
+          <Paragraph>
+            <RichText render={home.body.raw} />
+          </Paragraph>
+          <Polygon />
+        </Splash>
+      </SplashWrapper>
     </main>
   );
 };
@@ -192,6 +200,9 @@ export const query = graphql`
         profile_image {
           url
           alt
+        }
+        splash_image {
+          url
         }
       }
     }
