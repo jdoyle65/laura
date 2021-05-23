@@ -38,19 +38,62 @@ const Column = styled.div`
   padding: 0 1rem;
 `;
 
+const BannerImage = styled.div`
+  position: relative;
+  margin: -1rem -3rem 0;
+  padding: 1rem 3rem 3rem;
+
+  & * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(${(props) => props.url});
+    background-size: cover;
+    filter: grayscale(100%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      335deg,
+      rgba(var(--tertiary-color-rgb), 0.8) 0%,
+      rgba(var(--complementary-rgb), 0.25) 100%
+    );
+    filter: brightness(20%);
+  }
+`;
+
 const ClassTemplate = (props) => {
   const { uid, data } = props.pageContext.data;
-  const { lectures, display_dates = false } = data;
+  const { lectures, display_dates = false, image } = data;
+  console.log(image);
 
   return (
     <Main>
-      <title>{data.title.text} - Laura V Ferguson, PhD</title>
-      <Title>{data.title.text}</Title>
-      {display_dates && (
-        <p>
-          <DateSpan>{format(new Date(data.start_date), "PPP")}</DateSpan>
-        </p>
-      )}
+      <title style={{ zIndex: 1 }}>
+        {data.title.text} - Laura V Ferguson, PhD
+      </title>
+      <BannerImage url={image.url}>
+        <Title color={"var(--bg-color)"}>{data.title.text}</Title>
+        {display_dates && (
+          <p>
+            <DateSpan>{format(new Date(data.start_date), "PPP")}</DateSpan>
+          </p>
+        )}
+      </BannerImage>
       <Row>
         <Column style={{ flex: 2 }}>
           <SubTitle>About</SubTitle>

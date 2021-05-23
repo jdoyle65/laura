@@ -9,6 +9,10 @@ exports.createPages = async function ({ actions, graphql }) {
               title {
                 text
               }
+              image {
+                url
+                alt
+              }
               display_dates
               start_date
               description {

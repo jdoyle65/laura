@@ -6,6 +6,7 @@ import emphasis from "../styled/emphasis";
 const Heading = emphasis(
   styled.h1`
     font-size: 3rem;
+    ${(props) => (props.color ? `color: ${props.color}` : "")}
   `,
   { highlightAlpha: 0.5 }
 );
@@ -14,8 +15,8 @@ const Wrapper = styled.div`
   margin: 1rem 0;
 `;
 
-export default ({ children }) => (
+export default ({ children, color }) => (
   <Wrapper>
-    <Heading>{children}</Heading>
+    <Heading color={color}>{children}</Heading>
   </Wrapper>
 );
