@@ -40,6 +40,7 @@ const Column = styled.div`
 
 const BannerImage = styled.div`
   position: relative;
+  z-index: 0;
   margin: -1rem -3rem 0;
   padding: 1rem 3rem 3rem;
 

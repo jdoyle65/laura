@@ -97,10 +97,14 @@ const HeadingBottom = styled(heading(HeadingOne))`
 
 const Paragraph = styled.div`
   line-height: 1.5;
-  margin-top: 5rem;
+  margin-top: 1rem;
   max-width: 32rem;
   position: relative;
   z-index: 1;
+
+  @media (min-width: ${breakpoints.md}) {
+    margin-top: 2rem;
+  }
 `;
 
 const Polygon = styled.div`
@@ -121,6 +125,20 @@ const Polygon = styled.div`
   }
 `;
 
+const ProfileImage = styled.img`
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  border: solid 2px rgba(var(--complementary-rgb), 0.6);
+  width: 6rem;
+  height: 6rem;
+
+  @media (min-width: ${breakpoints.md}) {
+    width: 10rem;
+    height: 10rem;
+  }
+`;
+
 const IndexPage = ({ data }) => {
   const home = data.prismicHome.data;
 
@@ -132,6 +150,8 @@ const IndexPage = ({ data }) => {
         <HeadingTop>{home.top_heading.text}</HeadingTop>
         <br />
         <HeadingBottom>{home.bottom_heading.text}</HeadingBottom>
+        <br />
+        <ProfileImage src={home.profile_image.url} />
         <Paragraph>
           <RichText render={home.body.raw} />
         </Paragraph>
@@ -155,6 +175,10 @@ export const query = graphql`
         }
         body {
           raw
+        }
+        profile_image {
+          url
+          alt
         }
       }
     }
