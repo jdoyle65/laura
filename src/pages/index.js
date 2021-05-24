@@ -41,7 +41,7 @@ const Splash = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--primary-color);
+    background: rgba(var(--primary-rgb), 0.95);
 
     @media (min-width: ${breakpoints.md}) {
       width: 50%;
