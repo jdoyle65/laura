@@ -54,6 +54,8 @@ module.exports = {
           class: require("./src/schemas/class.json"),
           project: require("./src/schemas/project.json"),
           news: require("./src/schemas/news.json"),
+          people: require("./src/schemas/people.json"),
+          person: require("./src/schemas/person.json"),
         },
         lang: "en-ca",
         prismicToolbar: false,

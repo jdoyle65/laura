@@ -1,0 +1,26 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "uid"
+      }
+    },
+    "people": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "person": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["person"],
+              "label": "person"
+            }
+          }
+        },
+        "label": "people"
+      }
+    }
+  }
+}

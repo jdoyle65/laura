@@ -67,6 +67,10 @@ const items = [
     label: "Classes",
     href: "/classes",
   },
+  {
+    label: "People",
+    href: "/people",
+  },
 ];
 
 const Layout = ({ children }) => (

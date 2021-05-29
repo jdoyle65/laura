@@ -1,0 +1,85 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "uid"
+      }
+    },
+    "name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "name"
+      }
+    },
+    "is_current": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "Past",
+        "placeholder_true": "Current",
+        "default_value": true,
+        "label": "is_current"
+      }
+    },
+    "profile_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 400,
+          "height": 400
+        },
+        "thumbnails": [],
+        "label": "profile_image"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "allowTargetBlank": true,
+        "label": "description"
+      }
+    }
+  },
+  "Projects": {
+    "projects": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "project": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["project"],
+              "label": "project"
+            }
+          }
+        },
+        "label": "projects"
+      }
+    }
+  },
+  "Attributes": {
+    "attribute": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "key": {
+            "type": "Text",
+            "config": {
+              "label": "key"
+            }
+          },
+          "value": {
+            "type": "Text",
+            "config": {
+              "label": "value"
+            }
+          }
+        },
+        "label": "attribute"
+      }
+    }
+  }
+}
